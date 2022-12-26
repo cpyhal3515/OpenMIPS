@@ -1,0 +1,135 @@
+E:/Master/WorkSpace/OpenMIPS
+|-- Chapter4
+|   |-- Data
+|   |   `-- inst_rom.data
+|   |-- Include
+|   |   `-- define.v
+|   |-- RTL
+|   |   |-- ex.v
+|   |   |-- ex_mem.v
+|   |   |-- id.v
+|   |   |-- id_ex.v
+|   |   |-- if_id.v
+|   |   |-- inst_rom.v
+|   |   |-- mem.v
+|   |   |-- mem_wb.v
+|   |   |-- openmips.v
+|   |   |-- openmips_min_sopc.v
+|   |   |-- pc_reg.v
+|   |   `-- regfile.v
+|   |-- Sim
+|   |   `-- openmips_min_sopc_tb.v
+|   `-- inst_rom.bin
+|-- Chapter5
+|   |-- Data
+|   |   |-- inst_rom.S
+|   |   |-- inst_rom.data
+|   |   |-- inst_rom.data.bak
+|   |   |-- inst_rom1.S
+|   |   |-- inst_rom1.S.bak
+|   |   |-- inst_rom1.data
+|   |   |-- inst_rom2.S
+|   |   |-- inst_rom2.S.bak
+|   |   `-- inst_rom2.data
+|   |-- Include
+|   |   `-- define.v
+|   |-- RTL
+|   |   |-- ex.v
+|   |   |-- ex_mem.v
+|   |   |-- id.v
+|   |   |-- id_ex.v
+|   |   |-- if_id.v
+|   |   |-- inst_rom.v
+|   |   |-- mem.v
+|   |   |-- mem_wb.v
+|   |   |-- openmips.v
+|   |   |-- openmips_min_sopc.v
+|   |   |-- pc_reg.v
+|   |   `-- regfile.v
+|   |-- Sim
+|   |   `-- openmips_min_sopc_tb.v
+|   `-- inst_rom.bin
+|-- Chapter6
+|   |-- Data
+|   |   |-- inst_rom.S
+|   |   |-- inst_rom.data
+|   |   |-- inst_rom.data.bak
+|   |   |-- inst_rom1.S
+|   |   |-- inst_rom1.S.bak
+|   |   |-- inst_rom1.data
+|   |   |-- inst_rom2.S
+|   |   |-- inst_rom2.S.bak
+|   |   |-- inst_rom2.data
+|   |   |-- inst_rom3.S
+|   |   |-- inst_rom3.S.bak
+|   |   `-- inst_rom3.data
+|   |-- Include
+|   |   `-- define.v
+|   |-- RTL
+|   |   |-- ex.v
+|   |   |-- ex_mem.v
+|   |   |-- hilo_reg.v
+|   |   |-- id.v
+|   |   |-- id_ex.v
+|   |   |-- if_id.v
+|   |   |-- inst_rom.v
+|   |   |-- mem.v
+|   |   |-- mem_wb.v
+|   |   |-- openmips.v
+|   |   |-- openmips_min_sopc.v
+|   |   |-- pc_reg.v
+|   |   `-- regfile.v
+|   |-- Sim
+|   |   `-- openmips_min_sopc_tb.v
+|   `-- inst_rom.bin
+|-- Picture
+|   |-- 1.png
+|   |-- 2.png
+|   |-- 3.png
+|   |-- 4.png
+|   `-- 5.png
+|-- README.md
+|-- ToolKit
+|   |-- Bin2Mem.c
+|   |-- Bin2Mem.exe
+|   |-- Makefile
+|   |-- mips-4.3-221-mips-sde-elf-i686-pc-linux-gnu.tar.bz2
+|   `-- ram.ld
+`-- tree.txt
+F:/
+|-- $RECYCLE.BIN
+|   `-- S-1-5-21-128478370-2917241722-4112228710-1002
+|       `-- desktop.ini
+|-- LeStoreDownload
+|   `-- Wallpaper
+|-- LenovoSoftstore
+|   `-- Install
+|-- System Volume Information
+|-- Ubuntu 64 \316\273-0b87e481.vmem
+|-- Ubuntu 64 \316\273-0b87e481.vmem.lck
+|   `-- M38426.lck
+|-- Ubuntu 64 \316\273.nvram
+|-- Ubuntu 64 \316\273.vmdk
+|-- Ubuntu 64 \316\273.vmdk.lck
+|   `-- M14470.lck
+|-- Ubuntu 64 \316\273.vmsd
+|-- Ubuntu 64 \316\273.vmx
+|-- Ubuntu 64 \316\273.vmx.lck
+|   `-- M50161.lck
+|-- Ubuntu 64 \316\273.vmxf
+|-- Ubuntu_iso
+|   `-- ubuntu-16.04.7-desktop-amd64.iso
+|-- mksSandbox-0.log
+|-- mksSandbox-1.log
+|-- mksSandbox-2.log
+|-- mksSandbox.log
+|-- vm-3.scoreboard
+|-- vm-4.scoreboard
+|-- vm-5.scoreboard
+|-- vm.scoreboard
+|-- vmware-0.log
+|-- vmware-1.log
+|-- vmware-2.log
+`-- vmware.log
+
+28 directories, 103 files

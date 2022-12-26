@@ -33,6 +33,26 @@
 * [Chapter4](https://github.com/cpyhal3515/OpenMIPS/tree/main/Chapter4)：第一条指令 ori 的实现。
     * 本章通过实现指令 ori，搭建了一个原始的五级流水线结构，这也是 OpenMIPS 的核心。
     * 实现了一个用于测试的最小 SOPC，仅仅包括处理器 OpenMIPS、指令存储器 ROM。
+    * 文件结构示例：
+        * Data: 用来存放 rom 初始化的数据文件。
+            * inst_rom.data
+        * Include：用来存放 openmips 用到的头文件。
+            * define.v
+        * RTL：用来存放 openmips 用到的 RTL 文件。
+            * ex.v
+            * ex_mem.v
+            * id.v
+            * id_ex.v
+            * if_id.v
+            * inst_rom.v
+            * mem.v
+            * mem_wb.v
+            * openmips.v
+            * openmips_min_sopc.v
+            * pc_reg.v
+            * regfile.v
+        * Sim：用来存放 openmips 用到的仿真文件。
+            * openmips_min_sopc_tb.v
 
 ---
 
