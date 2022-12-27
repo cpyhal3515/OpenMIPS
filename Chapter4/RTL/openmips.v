@@ -1,3 +1,5 @@
+//---------------------------- openmips.v ----------------------------//
+// openmips 的顶层连接文件
 `include "../Include/define.v"
 module openmips (
     input clk,
@@ -62,7 +64,7 @@ wire wb_wreg_i;
 assign rom_addr_o = pc;
 assign rom_ce_o = ce;
 
-
+// pc_reg 模块的例化
 pc_reg pc_reg_inst0 (
     .clk(clk),
     .rst(rst),
@@ -71,7 +73,7 @@ pc_reg pc_reg_inst0 (
     .ce(ce)
 );
 
-
+// IF/ID 模块的例化
 if_id if_id_inst0 (
     .clk(clk),
     .rst(rst),
@@ -83,7 +85,7 @@ if_id if_id_inst0 (
     .id_inst(id_inst_i)
 );
 
-
+// 译码阶段 ID 模块例化
 id id_inst0 (
     .rst(rst),
     
@@ -91,29 +93,32 @@ id id_inst0 (
     .inst_i(id_inst_i),
 
 
-
+    // 来自 regfile 模块的输入
     .reg1_data_i(reg1_data_i),
     .reg2_data_i(reg2_data_i),
     
+    // 送到 ID/EX 模块的信息
     .aluop_o(id_aluop_o),
     .alusel_o(id_alusel_o),
     .wd_o(id_wd_o),
     .wreg_o(id_wreg_o),
-
     .reg1_o(id_reg1_o),
+    .reg2_o(id_reg2_o),
+
+
+    // 送到 regfile 模块的信息
     .reg1_addr_o(reg1_addr_o),
     .reg1_read_o(reg1_read_o),
 
-    .reg2_o(id_reg2_o),
     .reg2_addr_o(reg2_addr_o),
     .reg2_read_o(reg2_read_o)
 );
 
-
+// ID/EX 模块例化
 id_ex id_ex_inst0 (
     .clk(clk),
     .rst(rst),
-
+    // 从译码阶段 ID 模块传递过来的信息
     .id_aluop(id_aluop_o),
     .id_alusel(id_alusel_o),
     .id_reg1(id_reg1_o),
@@ -121,7 +126,7 @@ id_ex id_ex_inst0 (
     .id_wd(id_wd_o),
     .id_wreg(id_wreg_o),
 
-
+    // 传递到执行阶段 EX 模块的信息
     .ex_aluop(ex_aluop_i),
     .ex_alusel(ex_alusel_i),
     .ex_reg1(ex_reg1_i),
@@ -130,66 +135,68 @@ id_ex id_ex_inst0 (
     .ex_wreg(ex_wreg_i)
 );
 
-
+// EX 模块例化
 ex ex_inst0 (
     .rst(rst),
-
+    // 从 ID/EX 模块传递过来的信息
     .aluop_i(ex_aluop_i),
     .alusel_i(ex_alusel_i),
     .reg1_i(ex_reg1_i),
     .reg2_i(ex_reg2_i),
     .wd_i(ex_wd_i),
     .wreg_i(ex_wreg_i),
-
+    // 输出到 EX/MEM 模块的信息
     .wdata_o(ex_wdata_o),
     .wd_o(ex_wd_o),
     .wreg_o(ex_wreg_o)
     );
 
-
+// EX/MEM 模块例化
 ex_mem ex_mem_inst0 (
     .clk(clk),
     .rst(rst),
 
+    // 来自执行阶段 EX 模块的信息
     .ex_wdata(ex_wdata_o),
     .ex_wd(ex_wd_o),
     .ex_wreg(ex_wreg_o),
 
+    // 送到访存阶段 MEM 模块的信息
     .mem_wdata(mem_wdata_i),
     .mem_wd(mem_wd_i),
     .mem_wreg(mem_wreg_i)
     );
 
-
+// MEM 模块例化
 mem mem_inst0 (
     .rst(rst),
 
+    // 来自 EX/MEM 模块的信息
     .wdata_i(mem_wdata_i),
     .wd_i(mem_wd_i),
     .wreg_i(mem_wreg_i),
-
-
+    // 送到 MEM/WB 模块的信息
     .wdata_o(mem_wdata_o),
     .wd_o(mem_wd_o),
     .wreg_o(mem_wreg_o)
 );
 
-
+// MEM/WB 模块例化
 mem_wb mem_wb_inst0 (
     .clk(clk),
     .rst(rst),
-
+    
+    // 来自访存阶段 MEM 模块的信息
     .mem_wdata(mem_wdata_o),
     .mem_wd(mem_wd_o),
     .mem_wreg(mem_wreg_o),
-
-
+    // 送到回写阶段的信息
     .wb_wdata(wb_wdata_i),
     .wb_wd(wb_wd_i),
     .wb_wreg(wb_wreg_i)
 );
 
-
+// 通用寄存器 Regfile 模块例化
 regfile regfile_inst0 (
     .clk(clk),
     .rst(rst),

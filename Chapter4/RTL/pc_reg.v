@@ -1,25 +1,25 @@
 //---------------------------- pc_reg.v ----------------------------//
-// There are two main functions:
-// 1. ce is enable value of instruction register.
-// 2. pc adds 4 every clock when ce is enabled.
+// pc_reg.v 用来取址，主要有两个功能：
+// 1. ce 作为指令寄存器的使能值
+// 2. pc ，当 ce 使能后每个 clk，pc 自增 4
 `include "../Include/define.v"
 module pc_reg(
     input clk,
     input rst,
-    output reg [`InstAddressBus] pc,    // Question: why InstAddressBus 31:0
+    output reg [`InstAddressBus] pc,   
     output reg ce
 );
     always @(posedge clk) begin
-        if(rst == `ResetEnable)         // Instruction memory is disabled when reset
+        if(rst == `ResetEnable)         // 复位时指令寄存器 disabled
             ce <= `ChipDisable;
-        else                            // Instruction memory is enabled after reset
+        else                            // 复位完成后指令寄存器 enabled
             ce <= `ChipEnable;
     end
 
     always @(posedge clk) begin
-        if(ce == `ChipDisable)          // When instruction memory is disabled, pc is 0
+        if(ce == `ChipDisable)          // 指令寄存器 disabled 时 pc = 0 
             pc <= `ZeroWord;
-        else                            // When instruction memory is enabled, pc adds 4 every clock
+        else                            // 指令寄存器 enabled 时，每过一个 clk，pc 自增 4
             pc <= pc + 4'd4;
     end
 endmodule

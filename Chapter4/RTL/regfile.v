@@ -1,5 +1,5 @@
 //---------------------------- regfile.v ----------------------------//
-// General-purpose registers, including write and read
+// 通用寄存器，包括写与读
 `include "../Include/define.v"
 module regfile (
     input clk,
@@ -21,23 +21,24 @@ module regfile (
 
 
 //------------------------------------------------------------------//
-// Define General-purpose registers, 32 numbers x 32 bits
+// 定义通用寄存器，一共 32 个通用寄存器，每个通用寄存器的大小为 32 bits
 reg [`RegisterBus] InstMemory [0:`RegisterNum-1];
 
 //------------------------------------------------------------------//
-// Completes the operation written to the register
+// 完成对寄存器的写操作
+// 写寄存器操作是时序逻辑电路，写操作发生在时钟信号的上升沿
 
-// Question: Why write process uses timing logic but read process uses combinatorial logic?
-// Answer: The read register is combinatorial logic that ensures when addr1 or addr2 changes
-//         the output data also changes immediately for the decoding stage.
 always@(posedge clk) begin 
-    // Note here General-purpose registers $0 is not used, don't write
+    // 通用寄存器的 $0 寄存器是不用的，因此不要去写它
     if(rst == `ResetDisable && we == `WriteEnable && waddr != `RegisterNumLog2'h0)
         InstMemory[waddr] = wdata; 
 end
 
 //------------------------------------------------------------------//
-// Completes the operation read register1
+// 完成对通用寄存器的读操作
+// 读寄存器操作是组合逻辑电路，也就是一旦输入的要读取的寄存器地址 raddr1 或者
+// raddr2 发生变化，那么会立即给出新地址对应的寄存器的值，这样可以保证在译码阶段
+// 取得要读取的寄存器的值
 always@(*) begin
     if(rst == `ResetEnable || re1 == `ReadDisable || raddr1 == `RegisterNumLog2'h0)
         rdata1 = `ZeroWord;
@@ -49,8 +50,7 @@ always@(*) begin
     end
 end
 
-//------------------------------------------------------------------//
-// Completes the operation read register2
+
 always@(*) begin
     if(rst == `ResetEnable || re2 == `ReadDisable || raddr2 == `RegisterNumLog2'h0)
         rdata2 = `ZeroWord;

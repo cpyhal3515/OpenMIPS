@@ -1,5 +1,5 @@
 //---------------------------- id.v ----------------------------//
-// Complete the operation decoding
+// 完成操作码解码的部分
 `include "../Include/define.v"
 module id (
     input rst,
@@ -24,11 +24,15 @@ module id (
     output reg reg2_read_o
 );
 
+// 指令码、功能码：需要对应 P11 页的指令格式
+// R 类型的指令由 inst_i[31:26] 以及 inst_i[5:0] 指定
+// I 类型的指令由 inst_i[31:26] 指定
 wire [5:0] op = inst_i[31:26];
+// 立即数
 reg  [`RegisterBus] immediate;
 
 //------------------------------------------------------------------//
-// do corresponding assignment according to the operand op
+// 根据操作码完成对应的配置
 always@(*) begin
     if(rst == `ResetEnable) begin
         aluop_o = `EXE_NOR_OP;
@@ -81,7 +85,7 @@ always@(*) begin
     end
 
 //------------------------------------------------------------------//
-// Complete the MUX output of the data
+// 确定进行运算的源操作数 1 和源操作数 2，实际上就是一个 MUX
 always@(*) begin
     if(rst == `ResetEnable) 
         reg1_o = `ZeroWord;
@@ -94,8 +98,7 @@ always@(*) begin
     end
 
 end
-//------------------------------------------------------------------//
-// Complete the MUX output of the data
+
 always@(*) begin
     if(rst == `ResetEnable) 
         reg2_o = `ZeroWord;

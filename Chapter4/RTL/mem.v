@@ -1,5 +1,5 @@
 //---------------------------- mem.v ----------------------------//
-// Just a wire.
+// 访存部分，这里暂时还没有用到，因此直接用 wire 连接输入与输出端口
 `include "../Include/define.v"
 module mem (
     input rst,

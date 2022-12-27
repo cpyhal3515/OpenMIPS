@@ -1,5 +1,5 @@
 //---------------------------- id_ex.v ----------------------------//
-// Just a register.
+// 就是一个寄存器，作为流水线不同功能模块之间打拍的部分
 `include "../Include/define.v"
 module id_ex (
     input clk,
