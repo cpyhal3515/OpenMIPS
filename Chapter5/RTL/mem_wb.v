@@ -1,5 +1,5 @@
 //---------------------------- mem_wb.v ----------------------------//
-// Just a register.
+// 访存到回写部分，这里只是一个寄存器
 `include "../Include/define.v"
 module mem_wb (
     input clk,

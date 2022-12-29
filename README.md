@@ -53,6 +53,7 @@
             * regfile.v
         * Sim：用来存放 openmips 用到的仿真文件。
             * openmips_min_sopc_tb.v
+        * Picture：用来存放说明文件中用到的图片。
 
 ---
 
